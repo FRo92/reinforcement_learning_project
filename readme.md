@@ -1,4 +1,4 @@
-#### Técnicas de Reinforcement Learning aplicado al juego Snake 🐍 ####
+# Técnicas de Reinforcement Learning aplicado al juego Snake 🐍 #
 
 ## Integrantes: ##
 - José Antonio Lipari
