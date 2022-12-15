@@ -24,7 +24,7 @@ pip install -r requirements.txt
 ```
 Luego, existen instrucciones para cada implementación para iterar ~2000 veces el juego
 
-## Deep Q Learning 🥇##
+## Deep Q Learning 🥇 ##
 Para el método dql ejecutamos la instrucción:
 
 ```
@@ -39,7 +39,7 @@ make q_learning
 ```
 Mientras se ejecuta el juego se desplegará una ventana emergente con la interfaz del juego que permite ver el proceso de aprendizaje, los valores de cada juego quedarán impresos en la terminal.
 
-## Policy Gradient 🥉##
+## Policy Gradient 🥉 ##
 Para el método dql ejecutamos la instrucción:
 ```
 make policy_gradient
