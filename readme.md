@@ -1,5 +1,7 @@
 # Técnicas de Reinforcement Learning aplicado al juego Snake 🐍 #
 
+Documentación del código utilizado para desarrollar el proyecto final del curso Deep Learning Avanzado @ MIA UC, titulado "Benchmark de metodologías de Aprendizaje reforzado para Snake Game"
+
 ## Integrantes: ##
 - José Antonio Lipari
 - José Francisco Mallea
