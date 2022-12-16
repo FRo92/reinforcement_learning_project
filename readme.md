@@ -41,9 +41,11 @@ Mientras se ejecuta el juego se desplegará una ventana emergente con la interfa
 ## Q Learning 🥈 ##
 
 Para el método [dql](https://github.com/FRo92/reinforcement_learning_project/tree/main/q_learning_tradicional) es el más antiguo de la comparación, se basa en la solución de la ecuación de Bellman:
+
 $$
 Q(s,a) = R(s,a) + \lambda max_{a'\in A}Q(s',a')
 $$
+
 Donde Q(s,a) es el valor que se busca llenar de forma tabular en función de estados s y acciones a, $\lambda$ es el factor de olvido de recompensas lejanas y $max_{a'\in A}Q(s',a')$ es la acción que maximiza la recompensa futura.
 
 Esta implementación requiere ajustar los parámetros $\lambda$ y el factor de exploración $\epsilon$.
