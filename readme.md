@@ -41,7 +41,7 @@ Mientras se ejecuta el juego se desplegará una ventana emergente con la interfa
 ## Q Learning 🥈 ##
 
 Para el método [dql](https://github.com/FRo92/reinforcement_learning_project/tree/main/q_learning_tradicional) es el más antiguo de la comparación, se basa en la solución de la ecuación de Bellman:
-$$ Q(s,a) = R(s,a) + \lambda max_{a'\in A}Q(s',a') $$
+$ Q(s,a) = R(s,a) + \lambda max_{a'\in A}Q(s',a') $
 Donde Q(s,a) es el valor que se busca llenar de forma tabular en función de estados s y acciones a, $\lambda$ es el factor de olvido de recompensas lejanas y $max_{a'\in A}Q(s',a')$ es la acción que maximiza la recompensa futura.
 
 Esta implementación requiere ajustar los parámetros $\lambda$ y el factor de exploración $\epsilon$.
@@ -55,10 +55,14 @@ Mientras se ejecuta el juego se desplegará una ventana emergente con la interfa
 ## Policy Gradient 🥉 ##
 
 El método [policyGradient](https://github.com/FRo92/reinforcement_learning_project/tree/main/policy_gradient), a diferencia de los métodos anteriores, busca aprender la política directamente como una función de probabilidad, en este caso, discreta usando [tfp.distributions.Categorical](https://www.tensorflow.org/probability/api_docs/python/tfp/distributions/Categorical). Además, la política se actualiza cada vez que la serpiente muere. Se busca maximizar la probabilidad de aquellas acciones que aumentan la recompenza y minimizar aquellas que la disminuyen, lo que se traduce en la siguiente función de pérdida:
-$$ \ell(\theta) = -log \pi(a_t | s_t)G_t $$
+
+$ \ell(\theta) = -log \pi(a_t | s_t)G_t $
+
 Donde $\pi$ es la política y $G_t$ es la recompensa total.
 Aplicando el descenso de gradiente a la función de pérdida se obtiene:
-$$ \theta \leftarrow \theta + \eta \nabla log \pi(a_t | s_t)G_t $$
+
+$ \theta \leftarrow \theta + \eta \nabla log \pi(a_t | s_t)G_t $
+
 Esta implementación está hecha en tenssorflow con dos capas densas de tamaño 30.
 
 Para el método dql ejecutamos la instrucción:
@@ -80,9 +84,11 @@ Implementación de entornos virtuales específicos para cada técnica  ya que la
 ## Métricas de comparación ⚖️ ##
 Para poder realizar una comparación efectiva debemos definir un entorno de comparación justo y modificar las diversas implementaciones para que sean comparables entre ellas, con ese objetivo tomamos las siguientes consideraciones:
 Ajustamos el tamaños del tablero a 30x20 cuadrantes o movimientos en todas las implementaciones
-Comparamos mejoras en puntaje obtenido vs cantidad de juegos de entrenamiento para definir qué algoritmo aprende más rápido comparando puntaje promedio y máximo.\\
+Comparamos mejoras en puntaje obtenido vs cantidad de juegos de entrenamiento para definir qué algoritmo aprende más rápido comparando puntaje promedio y máximo.
+
 Incorporamos datos de un humano aprendiendo en condiciones similares como referencia
-Adicionalmente, comparamos el tiempo de implementación, ya que realizar un juego demora tiempos distintos dependiendo del algoritmo utilizado.\\
+Adicionalmente, comparamos el tiempo de implementación, ya que realizar un juego demora tiempos distintos dependiendo del algoritmo utilizado.
+
 Finalmente, preparamos versiones distribuídas utilizando CUDA y versiones no distribuidas usando CPU para comparar los beneficios en términos de ahorro de tiempo de entrenamiento, sin embargo, el código presentado en este repositorio solo presenta la implementación en CPU.
 
 ## Conclusiones 👇🏼 ##
