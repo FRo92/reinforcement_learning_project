@@ -1,7 +1,7 @@
 #%%
 import pygame
 import random
-import Learner
+import q_learning_tradicional.Learner as Learner
 
 pygame.init()
 

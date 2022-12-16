@@ -3,8 +3,8 @@ import random
 import numpy as np
 from collections import deque
 from snake_gameai import SnakeGameAI,Direction,Point,BLOCK_SIZE
-from model import Linear_QNet,QTrainer
-from Helper import plot
+from deep_q_learning.model import Linear_QNet,QTrainer
+from deep_q_learning.Helper import plot
 import pandas as pd
 import time
 
