@@ -11,14 +11,14 @@ Documentación del código utilizado para desarrollar el proyecto final del curs
 A continuación se presenta el código usado para realizar el benchmark de las 3 técnicas de aprendizaje reforzado aplicado al juego Snake, cada carpeta alberga una metodología distinta, además se dejaron los archivos csv que contienen la información de las 2000 iteraciones que se compararon y presentaron en el informe final.
 
 ## Consideraciones: ##
-Se trabajaron sobre códigos existentes en la web, presentados a continuación:
+Se trabajó sobre código realizado por otros autores disponibles en la web, referenciados a continuación:
 * [Policy Gradient](https://gist.github.com/ViniTheSwan/66fd59d78e94e06e00595ae9c1748d10#file-reinforce-py)
 * [deep_q_learning](https://github.com/vedantgoswami/SnakeGameAI)
 * [q_learning](https://gist.github.com/jl4r1991)
 
 Se trabajó principalmente en la homologación de las condiciones del entorno para que sean comparables (tamaño y forma del tablero, tamaños de serpiente y manzana) dejando un tablero de 600x400 pixeles o bien 30x20 cuadrantes para cada implementación y además homologamos los movimientos de la serpiente.
 
-### ¿Cómo ejecutar el código? 💻 ###
+### ¿Cómo ejecutar el código? 💻 ### (agregar aporte de jugada humana)
 Primero se deben instalar las librerías necesarias (se recomienda crear un ambiente seguro) ejecutando el siguiente comando en la terminal (python -v 3.8.10):
 
 ```
@@ -84,7 +84,7 @@ Se investigan 8 implementaciones realizadas por autores diferentes, de las cuale
 * Habilitación hardware propio ya que no ejecutan en colab las implementaciones utilizadas, por problemas de versionamiento o interfaz gráfica.
 * GPU utilizada Nvidia: GTX 1660TI  16GB ram en entorno
 * CPU utilizada: intel I9                     16GB ram en entono
-*Instalación y aprendizaje de librerías:
+* Instalación y aprendizaje de librerías:
 Pygame /Pytorch /imageio/scipy.ndimage/Tensorflow/matplotlib.pyplot
 Implementación de entornos virtuales específicos para cada técnica  ya que las versiones GPU presentaban conflictos de instalación:
 * Se utilizó Anaconda instalando versiones específicas de cada implementación.
@@ -98,6 +98,12 @@ Incorporamos datos de un humano aprendiendo en condiciones similares como refere
 Adicionalmente, comparamos el tiempo de implementación, ya que realizar un juego demora tiempos distintos dependiendo del algoritmo utilizado.
 
 Finalmente, preparamos versiones distribuídas utilizando CUDA y versiones no distribuidas usando CPU para comparar los beneficios en términos de ahorro de tiempo de entrenamiento, sin embargo, el código presentado en este repositorio solo presenta la implementación en CPU.
+
+## Resultados 📈 ##
+A continuación, se presentan los resultados obtenidos al comparar el rendimiento de las tres metodologías:
+* Resultados comparación Humano vs Aprendizaje reforzado para 60 iteraciones:
+![comparación 60 iteraciones Humano vs Máquina](https://github.com/FRo92/reinforcement_learning_project/tree/main/results_images/resultados_1.png)
+
 
 ## Conclusiones 👇🏼 ##
 
