@@ -11,12 +11,17 @@ Documentación del código utilizado para desarrollar el proyecto final del curs
 A continuación se presenta el código usado para realizar el benchmark de las 3 técnicas de aprendizaje reforzado aplicado al juego Snake, cada carpeta alberga una metodología distinta, además se dejaron los archivos csv que contienen la información de las 2000 iteraciones que se compararon y presentaron en el informe final.
 
 ## Consideraciones: ##
-Se trabajó sobre código realizado por otros autores disponibles en la web, referenciados a continuación:
+Se trabajó sobre código desarrollado por otros autores disponibles en la web, referenciados a continuación:
 * [Policy Gradient](https://gist.github.com/ViniTheSwan/66fd59d78e94e06e00595ae9c1748d10#file-reinforce-py)
 * [deep_q_learning](https://github.com/vedantgoswami/SnakeGameAI)
 * [q_learning](https://gist.github.com/jl4r1991)
 
-Se trabajó principalmente en la homologación de las condiciones del entorno para que sean comparables (tamaño y forma del tablero, tamaños de serpiente y manzana) dejando un tablero de 600x400 pixeles o bien 30x20 cuadrantes para cada implementación y además homologamos los movimientos de la serpiente.
+La ejecución y adopción de los códigos anteriormente señalados no es trivial, puesto que carecen de documentación y algunas funciones se encuentran deprecadas, por lo que gran parte del tiempo se invirtió en entender los códigos y lograr hacerlos funcionar en nuestras máquinas locales.
+
+Se implementó un ambiente virtual seguro donde la ejecución de los tres métodos fuera compatible, los requerimientos de este ambiente se encuentran disponibles en el archivo [requeriments.txt](https://github.com/FRo92/reinforcement_learning_project/blob/main/requeriments.txt) de este repositorio.
+
+Tambiém, se trabajó en la homologación de las condiciones del entorno para que sean comparables (tamaño y forma del tablero, tamaños de serpiente y manzana) dejando un tablero de 600x400 pixeles o bien 30x20 cuadrantes para cada implementación y además homologamos los movimientos de la serpiente.
+
 
 ### ¿Cómo ejecutar el código? 💻 ### (agregar aporte de jugada humana)
 Primero se deben instalar las librerías necesarias (se recomienda crear un ambiente seguro) ejecutando el siguiente comando en la terminal (python -v 3.8.10):
@@ -102,7 +107,24 @@ Finalmente, preparamos versiones distribuídas utilizando CUDA y versiones no di
 ## Resultados 📈 ##
 A continuación, se presentan los resultados obtenidos al comparar el rendimiento de las tres metodologías:
 * Resultados comparación Humano vs Aprendizaje reforzado para 60 iteraciones:
-![comparación 60 iteraciones Humano vs Máquina](https://github.com/FRo92/reinforcement_learning_project/tree/main/results_images/resultados_1.png)
+![comparación 60 iteraciones Humano vs Máquina](https://github.com/FRo92/reinforcement_learning_project/blob/main/results_images/resultados_1.png)
+Para tener un punto de comparación y referencia entrenamos un [humano](https://www.linkedin.com/search/results/all/?heroEntityKey=urn%3Ali%3Afsd_profile%3AACoAACtV7soBYqUskGfD1tRhBlnIzp756eJ64xg&keywords=jos%C3%A9%20antonio%20lipari%20arias&origin=RICH_QUERY_TYPEAHEAD_HISTORY&position=0&searchId=78036010-c4b8-4767-97f9-a1243137a39a&sid=%409V) sin experiencia previa en el juego y registramos cómo evoluciona su puntaje respecto a los algoritmos de aprendizaje reforzado (2 bloques de 45 minutos de entrenamiento).
+
+Se observa que el humano aprende mucho más rápido que cualquiera de los métodos probados cuando se comparan solo 60 iteraciones, registrando un máximo de 41 puntos  y un promedio de 31 puntos una vez que aprende. De acá surge la pregunta, ¿cuántas iteraciones más que un humano requiere una sistema para llegar o incluso sobrepasar el desempeño humano?
+
+* Resultados comparación Humano vs Aprendizaje reforzado para 1800 iteraciones:
+![comparación 1800 iteraciones Humano vs Máquina](https://github.com/FRo92/reinforcement_learning_project/blob/main/results_images/resultados_3.png)
+
+Se puede ver que el mejor desempeño lo obtiene algoritmo deep Q learning después de la iteración 300, seguido de cerca por Q-learning tradicional que a momentos iguala sus resultados y en tercer lugar policy gradient con una pendiente de aprendizaje menos pronunciada pero creciente en el tiempo, este último aprende más lentamente y obtiene buenos resultados pero en el rango de iteraciones observado no logra superar a las otras 2 metodologías, se deduce que debido al modo de entrenamiento (actualización de política una vez terminado un juego) la forma de aprender es más lenta pues requiere muchos más movimientos y tiempo, a diferencia de las metodologías de Q-Learning, que se actualizan para cada acción-estado.
+
+* Comparativo de desempeño después de entrenamiento:
+![comparación 10 juegos Humano vs Máquina luego de 1000 iteraciones de entrenamiento](https://github.com/FRo92/reinforcement_learning_project/blob/main/results_images/resultados_4.png)
+
+Todas las implementaciones realizadas son capaces de ganarle a un humano en una secuencia de 10 juegos luego de un entrenamiento de 1000 juegos de aprendizaje.  Sin embargo, el ganador es Deep learning con un puntaje difícilmente lograble por un ser humano.
+
+También se observó que los obstáculos del juego van variando en función del tiempo, debido a que mientrás mas tiempo pasa y más premios come la serpiente, su cuerpo se hace cada vez más largo, aumentando la complejidad de los movimientos, puesto que ahora no solo se deben evitar los bordes sino el cuerpo y cola del mismo agente (serpiente), en estos casos el desempeño de algoritmos de Q-Learning y Deep Q-Learning no era bueno, tienden a morir chocando con su mismo cuerpo a medida que pasa el tiempo, sin embargo,  el método de Policy Gradient si logra aprender una política en esas situaciones, logrando ejecutar movimientos claros que evitan tocar su propio cuerpo, a continuación se presenta la animación de la implementación de policy gradient donde se aprencia la adopción de la política para evitar lo descrito:
+
+![Performance Snake con Policy Gradient](https://github.com/FRo92/reinforcement_learning_project/blob/main/results_images/gif_policy_gradient.gif)
 
 
 ## Conclusiones 👇🏼 ##
