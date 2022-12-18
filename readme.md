@@ -82,7 +82,7 @@ Esta implementación está hecha en tenssorflow con dos capas densas de tamaño 
 
 Para el método pg primero sólo se ejecuta el agente snake.py, que llama al modelo PolicyGradient mediante la instrucción:
 ```
-make policy_gradient
+make pg
 ```
 Este método guarda los valores de cada juego en un archivo .csv y va guardando gifs cada vez que se alcanza un record de recomensas, quedan en la carpeta scores y gifs respectivamente.
 
