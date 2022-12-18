@@ -20,7 +20,7 @@ La ejecución y adopción de los códigos anteriormente señalados no es trivial
 
 Se implementó un ambiente virtual seguro donde la ejecución de los tres métodos fuera compatible, los requerimientos de este ambiente se encuentran disponibles en el archivo [requeriments.txt](https://github.com/FRo92/reinforcement_learning_project/blob/main/requeriments.txt) de este repositorio.
 
-También, se trabajó en la homologación de las condiciones del entorno para que sean comparables (tamaño y forma del tablero, tamaños de serpiente y manzana) dejando un tablero de 600x400 pixeles o bien 30x20 cuadrantes para cada implementación y además homologamos los movimientos de la serpiente.
+También, se trabajó en la homologación de las condiciones del entorno para que sean comparables (tamaño y forma del tablero, tamaños de serpiente y manzana) dejando un tablero de 600x400 pixeles o bien 30x20 cuadrantes para cada implementación, velocidad de simulación y además homologamos los movimientos de la serpiente.
 
 Finalmente, decidimos implementar un método más para realizar una comparación que resulte más evidente, esta es la comparación con un jugador [humano](https://www.linkedin.com/search/results/all/?heroEntityKey=urn%3Ali%3Afsd_profile%3AACoAACtV7soBYqUskGfD1tRhBlnIzp756eJ64xg&keywords=jos%C3%A9%20antonio%20lipari%20arias&origin=RICH_QUERY_TYPEAHEAD_HISTORY&position=0&searchId=78036010-c4b8-4767-97f9-a1243137a39a&sid=%409V) sin experiencia previa en el juego.
 
@@ -36,10 +36,10 @@ Luego, existen instrucciones para cada implementación para iterar ~2000 veces e
 
 Es el [método](https://github.com/FRo92/reinforcement_learning_project/tree/main/deep_q_learning) más actual, se basa en el q_learning tradicional, es decir, se busca resolver la ecuación de Bellman, pero se busca representar la función Q con una red neuronal. En este caso se implementó en pytorch una red de una capa oculta de tamaño 256.
 
-Esta implementación requiere tunear los parámetros: learning rate (factor de aprendizaje), penalización (factor de olvido) y epsilon (factor de exploración incial).
+Esta implementación requiere tunear los parámetros: learning rate (factor de aprendizaje), penalización (factor de olvido) y epsilon (factor de exploración incial), además, primero se ejecuta el agente, el que a su vez llama al modelo y a la interfaz.
 
 ```
-make deep_q_learning
+make dql
 ```
 
 Mientras se ejecuta el juego se desplegará una ventana emergente con la interfaz del juego que permite ver el proceso de aprendizaje, los valores de cada juego quedarán impresos en la terminal.
@@ -60,6 +60,7 @@ Para ejecutar este método, debemos primero debemos inicializar los valores de Q
 ```
 make q_learning
 ```
+
 Mientras se ejecuta el juego se desplegará una ventana emergente con la interfaz del juego que permite ver el proceso de aprendizaje, los valores de cada juego quedarán impresos en la terminal.
 
 ## Policy Gradient 🥉 ##
@@ -79,7 +80,7 @@ $$
 
 Esta implementación está hecha en tenssorflow con dos capas densas de tamaño 30.
 
-Para el método dql ejecutamos la instrucción:
+Para el método pg primero sólo se ejecuta el agente snake.py, que llama al modelo PolicyGradient mediante la instrucción:
 ```
 make policy_gradient
 ```

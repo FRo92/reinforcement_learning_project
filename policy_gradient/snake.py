@@ -5,7 +5,7 @@ import tensorflow as tf
 import matplotlib.animation as animation
 import os
 import imageio
-import PolicyGradient
+import policy_gradient.PolicyGradient as PolicyGradient
 import time
 
 ##zero = empty, 1 = snake, 2 = apple
